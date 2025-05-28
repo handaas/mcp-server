@@ -61,7 +61,8 @@ python server/enterprise_mcp_server.py
 {
   "mcpServers": {
     "handaas-mcp-server": {
-      "url": "http://localhost:8000/mcp"
+      "type": "streamableHttp",
+      "url": "http://127.0.0.1:8000/mcp"
     }
   }
 }

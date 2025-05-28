@@ -238,7 +238,7 @@ if __name__ == "__main__":
     print(f"正在启动HandaaS API MCP服务器...")
     
     # streamable-http方式运行服务器
-    # mcp.run(transport="streamable-http")
+    mcp.run(transport="streamable-http")
     
     # stdio方式运行服务器
-    mcp.run(transport="stdio")
+    # mcp.run(transport="stdio")
