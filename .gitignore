@@ -1,0 +1,4 @@
+mcp_env/
+.env
+pycache/
+.DS_Store/
