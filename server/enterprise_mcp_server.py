@@ -16,8 +16,6 @@ mcp = FastMCP("HANDAAS企业大数据服务", instructions=description,dependenc
 INTEGRATOR_ID = os.environ.get("INTEGRATOR_ID")
 SECRET_ID = os.environ.get("SECRET_ID")
 SECRET_KEY = os.environ.get("SECRET_KEY")
-MCP_HOST = os.environ.get("MCP_HOST", "127.0.0.1")
-MCP_PORT = os.environ.get("MCP_PORT", 8000)
 
 
 def call_api(product_id: str, params: dict) -> dict:
@@ -238,7 +236,9 @@ def get_enterprise_main_person_info(keyword: str) -> dict:
 # 运行服务器
 if __name__ == "__main__":
     print(f"正在启动HandaaS API MCP服务器...")
-    mcp.settings.port = MCP_PORT
-    mcp.settings.host = MCP_HOST
-    # 运行服务器
-    mcp.run(transport="streamable-http")
+    
+    # streamable-http方式运行服务器
+    # mcp.run(transport="streamable-http")
+    
+    # stdio方式运行服务器
+    mcp.run(transport="stdio")

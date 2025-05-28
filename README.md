@@ -45,8 +45,6 @@ cp .env.example .env
 INTEGRATOR_ID=your_integrator_id
 SECRET_ID=your_secret_id
 SECRET_KEY=your_secret_key
-MCP_HOST=127.0.0.1
-MCP_PORT=8000
 ```
 
 ### 4. 启动服务
@@ -81,18 +79,20 @@ mcp.run(transport="stdio")
 
 ```json
 {
-  "mcpServers": {
-    "handaas-mcp-server": {
-      "command": "uv",
-      "args": ["run", "mcp", "run", "{workdir}/server/enterprise_mcp_server.py"],
-      "env": {
-        "INTEGRATOR_ID": "your_integrator_id",
-        "SECRET_ID": "your_secret_id",
-        "SECRET_KEY": "your_secret_key"
+    "mcpServers": {
+      "handaas-mcp-server": {
+        "command": "uv",
+        "args": ["run", "mcp", "run", "{workdir}/server/enterprise_mcp_server.py"],
+        "env": {
+          "PATH": "{workdir}/mcp_env/bin:$PATH",
+          "PYTHONPATH": "{workdir}/mcp_env",
+          "INTEGRATOR_ID": "your_integrator_id",
+          "SECRET_ID": "your_secret_id",
+          "SECRET_KEY": "your_secret_key"
+        }
       }
     }
   }
-}
 ```
 
 
