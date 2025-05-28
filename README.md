@@ -47,6 +47,11 @@ SECRET_ID=your_secret_id
 SECRET_KEY=your_secret_key
 ```
 
+### 4. 修改server/enterprise_mcp_server脚本中启动方式为streamable-http
+
+```python
+mcp.run(transport="streamable-http")
+```
 ### 4. 启动服务
 
 ```bash
@@ -70,7 +75,7 @@ python server/enterprise_mcp_server.py
 
 ## STDIO版安装部署
 
-### 1. 修改enterprise_mcp_server脚本中启动方式为stdio
+### 1. 修改server/enterprise_mcp_server脚本中启动方式为stdio
 
 ```python
 mcp.run(transport="stdio")
