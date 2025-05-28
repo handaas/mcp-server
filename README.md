@@ -20,8 +20,8 @@
 
 ### 1. 克隆项目
 ```bash
-git clone https://github.com/handaas/mcp
-cd enterprise-mcp
+git clone https://github.com/handaas/mcp-server
+cd mcp-server
 ```
 
 ### 2. 创建虚拟环境&安装依赖
