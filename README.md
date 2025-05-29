@@ -110,8 +110,9 @@ mcp.run(transport="stdio")
 {
   "mcpServers": {
     "handaas-ent-mcp-server":{
-        "url": "http://mcp.handaas.com/ent_mcp?token={token}"  
-        }
+      "type": "streamableHttp",
+      "url": "http://mcp.handaas.com/ent_mcp?token={token}"  
+      }
   }
 }
 ```
