@@ -1,0 +1,180 @@
+{
+  "mcpServers": {
+    "enterprise-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/enterprise_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "bid-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/bid_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "trademark-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/trademark_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "store-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/store_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "risk-insight-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/risk_insight_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "qualification-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/qualification_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "policy-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/policy_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "patent-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/patent_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "operation-insight-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/operation_insight_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "factory-insight-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/factory_insight_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "exhibition-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/exhibition_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "estore-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/estore_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "customs-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/customs_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "cloudmigration-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/cloudmigration_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "channel-insight-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/channel_insight_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    },
+    "building-bigdata-mcp-server": {
+      "command": "uv",
+      "args": ["run", "mcp", "run", "{workdir}/server/building_bigdata_mcp_server.py"],
+      "env": {
+        "PATH": "{workdir}/mcp_env/bin:$PATH",
+        "PYTHONPATH": "{workdir}/mcp_env",
+        "INTEGRATOR_ID": "INTEGRATOR_ID",
+        "SECRET_ID": "SECRET_ID",
+        "SECRET_KEY": "SECRET_KEY"
+      }
+    }
+  }
+}
