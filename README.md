@@ -176,7 +176,7 @@ mcp.run(transport="stdio")
   "mcpServers": {
     "handaas-ent-mcp-server":{
       "type": "streamableHttp",
-      "url": "http://mcp.handaas.com/ent_mcp?token={token}"  
+      "url": "https://mcp.handaas.com/enterprise/enterprise_profile?token={token}"  
       }
   }
 }
