@@ -165,7 +165,7 @@ mcp.run(transport="stdio")
   }
 }
 ```
-### 3. 其他全部mcpServer配置参考[all_mcp_config.json](all_mcp_config.json)
+### 3. 其他全部mcpServer配置参考[local_mcp_config.json](local_mcp_config.json)
 
 ## 使用官方Remote服务
 
