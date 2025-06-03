@@ -9,7 +9,7 @@ import json
 from typing import Dict, List, Optional, Any, Union
 import os
 from hashlib import md5
-
+import requests
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("网店大数据", instructions="网店大数据",dependencies=["python-dotenv", "requests"])
@@ -60,7 +60,13 @@ def call_api(product_id: str, params: dict) -> dict:
     call_params["signature"] = sign
     
     # 调用API
-    return call_api(call_params)
+    url = f'https://console.handaas.com/api/v1/integrator/call_api/{INTEGRATOR_ID}'
+    try:
+        response = requests.post(url, data=call_params)
+        return response.json().get("data", "查询为空")
+    except Exception as e:
+        return "查询失败"
+    
 @mcp.tool()
 def global_online_store_profile(matchKeyword: str, keywordType: str = None) -> dict:
     """
