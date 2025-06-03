@@ -167,10 +167,11 @@ mcp.run(transport="stdio")
 ```
 ### 3. 其他全部mcpServer配置参考[all_mcp_config.json](all_mcp_config.json)
 
-## 使用官方Remote服务(暂时只支持企业大数据MCP)
+## 使用官方Remote服务
 
 ### 1. 直接设置Cursor / Cherry Studio MCP配置
 
+#### 企业基础信息分析
 ```json
 {
   "mcpServers": {
@@ -181,6 +182,28 @@ mcp.run(transport="stdio")
   }
 }
 ```
+
+#### 全部线上MCP配置
+
+| MCP名称 | 子类 | URL |
+|---------|------|-----|
+| 企业大数据 | 企业基础信息分析 | /enterprise/enterprise_profile |
+| 企业大数据 | 企业风险分析洞察 | /enterprise/risk_insight |
+| 企业大数据 | 企业经营分析洞察 | /enterprise/operation_insight |
+| 工厂大数据 | 工厂信息分析洞察 | /factory/factory_insight |
+| 工厂大数据 | 渠道信息分析洞察 | /factory/channel_insight |
+| 店铺大数据 | 店铺大数据 | /store/store_bigdata |
+| 展会大数据 | 展会大数据 | /exhibition/exhibition_bigdata |
+| 楼宇大数据 | 楼宇大数据 | /building/building_bigdata |
+| 标讯大数据 | 标讯大数据 | /bidding/bidding_bigdata |
+| 专利大数据 | 专利大数据 | /patent/patent_bigdata |
+| 商标大数据 | 商标大数据 | /trademark/trademark_bigdata |
+| 海关大数据 | 海关大数据 | /customs/customs_bigdata |
+| 政策大数据 | 政策大数据 | /policy/policy_bigdata |
+| 资质大数据 | 资质大数据 | /qualification/qualification_bigdata |
+| 网店大数据 | 网店大数据 | /estore/estore_bigdata |
+| 上云大数据 | 上云大数据 | /cloudmigration/cloudmigration |
+
 
 ### 注意：integrator_id、secret_id、secret_key及token需要登录 https://www.handaas.com/ 进行注册开通平台获取
 
