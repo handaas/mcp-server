@@ -11,6 +11,9 @@ import os
 from hashlib import md5
 import requests
 from mcp.server.fastmcp import FastMCP
+from dotenv import load_dotenv
+
+load_dotenv()
 
 mcp = FastMCP("企业经营分析洞察", instructions="企业经营分析洞察",dependencies=["python-dotenv", "requests"])
 

@@ -10,6 +10,9 @@ import os
 from hashlib import md5
 import requests
 from mcp.server.fastmcp import FastMCP
+from dotenv import load_dotenv
+
+load_dotenv()
 
 mcp = FastMCP("标讯大数据", instructions="标讯大数据",dependencies=["python-dotenv", "requests"])
 
@@ -370,7 +373,7 @@ def planned_projects(matchKeyword: str, pageIndex: int = None, pageSize: int = N
 if __name__ == "__main__":
     print("正在启动bid_bigdata MCP服务器...")
     # streamable-http方式运行服务器
-    # mcp.run(transport="streamable-http")
+    mcp.run(transport="streamable-http")
 
-    # stdio方式运行服务器
-    mcp.run(transport="stdio")
+    # # stdio方式运行服务器
+    # mcp.run(transport="stdio")
