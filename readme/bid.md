@@ -1,66 +1,42 @@
 # 招投标大数据服务
 
-该服务提供全面的招投标信息查询功能，包括企业招投标记录、中标统计、招标分析、采购信息、拟建项目等，帮助用户了解企业的招投标情况和发现商业机会。
+该服务提供全面的招投标信息查询功能，包括中标统计、招标统计、采购统计、招投标信息查询、拟建项目查询等，帮助用户进行招投标分析和市场机会发现。
 
 ## 主要功能
 
 - 🔍 企业关键词模糊搜索
-- 📋 招投标信息查询
-- 🏆 中标统计分析
-- 📊 招标统计分析
-- 🛒 采购统计分析
-- 🔍 招投标公告搜索
+- 🏆 企业中标统计分析
+- 📋 企业招标统计分析
+- 💼 企业采购统计分析
+- 📄 招投标信息查询
 - 🏗️ 拟建项目查询
+- 🔎 招投标信息搜索
 
 ## 可用工具
 
-### 1. fuzzy_search
+### 1. bid_bigdata_fuzzy_search
 **功能**: 企业关键词模糊查询
 
 根据提供的企业名称、人名、品牌、产品、岗位等关键词模糊查询相关企业列表。
 
 **参数**:
-- `matchKeyword` (必需): 匹配关键词
+- `matchKeyword` (必需): 匹配关键词 - 查询各类信息包含匹配关键词的企业
 - `pageIndex` (可选): 分页开始位置
-- `pageSize` (可选): 分页结束位置
+- `pageSize` (可选): 分页结束位置 - 一页最多获取50条数据
 
 **返回值**:
 - `total`: 总数
 - `resultList`: 结果列表
+- 其他企业相关信息
 
-### 2. bidding_info
-**功能**: 企业招投标信息查询
+### 2. bid_bigdata_bid_win_stats
+**功能**: 企业中标统计分析
 
-根据输入的企业标识符查询并返回该企业参与的招投标信息，包括招投标公告类型、项目地区、公告详情等。
-
-**参数**:
-- `matchKeyword` (必需): 企业名称/注册号/统一社会信用代码/企业id
-- `pageSize` (可选): 分页大小 - 一页最多获取50条数据
-- `keywordType` (可选): 主体类型枚举
-- `pageIndex` (可选): 页码 - 从1开始
-
-**返回值**:
-- `total`: 总数
-- `resultList`: 招投标记录列表
-  - `biddingId`: 招投标Id
-  - `infoType`: 招投标公告类型
-  - `projectRegion`: 项目地区
-  - `publishDate`: 公告发布时间
-  - `subjectMatterList`: 标的物
-  - `title`: 公告标题
-  - `role`: 招投标角色（招标，中标）
-  - `projectAmount`: 项目金额
-  - `winningBidderList`: 中标企业列表
-  - `purchasingBidderList`: 招标企业列表
-
-### 3. bid_win_stats
-**功能**: 中标统计分析
-
-根据企业信息获取企业中标信息统计项，包括标的分布、金额分布、区域分布及中标趋势等。
+根据企业名称、统一社会信用代码等获取企业标讯信息中中标信息统计项，包括标的分布、金额分布、区域分布及中标趋势等。
 
 **参数**:
-- `matchKeyword` (必需): 企业名称/注册号/统一社会信用代码/企业id
-- `keywordType` (可选): 主体类型枚举
+- `matchKeyword` (必需): 匹配关键词 - 企业名称/注册号/统一社会信用代码/企业id
+- `keywordType` (可选): 主体类型 - name：企业名称，nameId：企业id，regNumber：注册号，socialCreditCode：统一社会信用代码
 
 **返回值**:
 - `winbidAmountStatList`: 中标金额分布
@@ -69,22 +45,48 @@
   - `count`: 数量
 - `winbidAreaStat`: 区域分布
   - `area`: 区域
+  - `count`: 数量
 - `winbidStatList`: 中标标的分布
+  - `subjectMatter`: 标的物
   - `count`: 数量
   - `percent`: 比例
-  - `subjectMatter`: 标的物
 - `winbidTrend`: 中标趋势
-  - `count`: 数量
   - `year`: 年份
+  - `count`: 数量
 
-### 4. tender_stats
-**功能**: 招标统计分析
+### 3. bid_bigdata_bidding_info
+**功能**: 企业招投标信息查询
 
-根据企业信息获取企业招标信息统计项，包括标的分布、金额分布、区域分布及招标趋势等。
+根据输入的企业标识符，查询并返回该企业参与的招投标信息，包括招投标公告类型、项目地区、公告详情及与之相关的企业信息。
 
 **参数**:
-- `matchKeyword` (必需): 企业名称/注册号/统一社会信用代码/企业id
-- `keywordType` (可选): 主体类型枚举
+- `matchKeyword` (必需): 匹配关键词 - 企业名称/注册号/统一社会信用代码/企业id
+- `pageSize` (可选): 分页大小 - 一页最多获取50条数据
+- `keywordType` (可选): 主体类型 - name：企业名称，nameId：企业id，regNumber：注册号，socialCreditCode：统一社会信用代码
+- `pageIndex` (可选): 页码 - 从1开始
+
+**返回值**:
+- `total`: 总数
+- `resultList`: 结果列表
+  - `biddingId`: 招投标Id
+  - `infoType`: 招投标公告类型
+  - `projectRegion`: 项目地区
+  - `publishDate`: 公告发布时间
+  - `subjectMatterList`: 标的物
+  - `title`: 公告标题
+  - `role`: 招投标角色 - 招标，中标
+  - `projectAmount`: 项目金额
+  - `winningBidderList`: 中标企业
+  - `purchasingBidderList`: 招标企业
+
+### 4. bid_bigdata_tender_stats
+**功能**: 企业招标统计分析
+
+根据企业名称、统一社会信用代码等获取企业标讯信息中招标信息统计项，包括标的分布、金额分布、区域分布及招标趋势等。
+
+**参数**:
+- `matchKeyword` (必需): 匹配关键词 - 企业名称/注册号/统一社会信用代码/企业id
+- `keywordType` (可选): 主体类型 - name：企业名称，nameId：企业id，regNumber：注册号，socialCreditCode：统一社会信用代码
 
 **返回值**:
 - `tenderAmountStatList`: 招标金额分布
@@ -95,21 +97,21 @@
   - `area`: 区域
   - `count`: 数量
 - `tenderStatList`: 招标标的分布
+  - `subjectMatter`: 标的物
   - `count`: 数量
   - `percent`: 比例
-  - `subjectMatter`: 标的物
 - `tenderTrend`: 招标趋势
-  - `count`: 数量
   - `year`: 年份
+  - `count`: 数量
 
-### 5. procurement_stats
-**功能**: 采购统计分析
+### 5. bid_bigdata_procurement_stats
+**功能**: 企业采购统计分析
 
 根据企业名称或ID，获取企业采购统计信息，包括采购产品分布、采购区域分布等。
 
 **参数**:
-- `matchKeyword` (必需): 企业名称/注册号/统一社会信用代码/企业id
-- `keywordType` (可选): 主体类型枚举
+- `keywordType` (可选): 主体类型 - name：企业名称，nameId：企业id，regNumber：注册号，socialCreditCode：统一社会信用代码
+- `matchKeyword` (必需): 匹配关键词 - 企业名称/注册号/统一社会信用代码/企业id
 
 **返回值**:
 - `purchasingProductStatList`: 采购产品分布
@@ -120,55 +122,55 @@
   - `times`: 客户数
   - `area`: 地区
 
-### 6. bid_search
-**功能**: 招投标公告搜索
+### 6. bid_bigdata_bid_search
+**功能**: 招投标信息搜索
 
-通过提供多种过滤条件查询和筛选招投标信息，返回符合条件的招投标公告详细信息。
+查询和筛选招投标信息，通过提供多种过滤条件返回符合条件的招投标公告详细信息。
 
 **参数**:
-- `matchKeyword` (可选): 搜索关键词
-- `biddingType` (可选): 信息类型 - 招标预告，招标公告，变更补充，中标公告，采购意向，废标终止
-- `biddingRegion` (可选): 项目地区 - 多选，支持省份、城市
+- `matchKeyword` (可选): 搜索关键词 - 默认按最新发布时间返回全部
+- `biddingType` (可选): 信息类型 - 招标类型枚举
+- `biddingRegion` (可选): 项目地区 - 多选，支持省份，城市
 - `biddingAnncPubStartTime` (可选): 发布开始日期 - 格式："2024-08-01"
 - `biddingAnncPubEndTime` (可选): 发布结束日期 - 格式："2024-11-01"
 - `searchMode` (可选): 搜索模式 - 标题匹配，标的物匹配，全文匹配
-- `biddingProjectMaxAmount` (可选): 项目金额最大值（万元）
-- `biddingPurchasingType` (可选): 招标单位类型 - 政府，学校，医院，公安，部队，企业
-- `biddingProjectMinAmount` (可选): 项目金额最小值（万元）
+- `biddingProjectMaxAmount` (可选): 项目金额最大值 - 单位：万
+- `biddingPurchasingType` (可选): 招标单位类型 - 政府，学校，医院等
+- `biddingProjectMinAmount` (可选): 项目金额最小值 - 单位：万
 - `pageIndex` (可选): 分页索引
 - `pageSize` (可选): 分页大小 - 一页最多获取50条
 
 **返回值**:
 - `total`: 总数
-- `resultList`: 招投标公告列表
-  - `biddingId`: 公告id
+- `resultList`: 结果列表
   - `biddingAnncTitle`: 公告标题
   - `biddingContent`: 正文
+  - `biddingId`: 公告id
   - `biddingInfoType`: 公告类型
   - `biddingProjectType`: 项目类型
   - `biddingPublishTime`: 公告时间
   - `biddingEndTime`: 招标截止时间
   - `biddingProjectID`: 项目编号
-  - `biddingAgentInfoList`: 招标代理机构信息
-  - `biddingPurchasingInfoList`: 招标单位信息
-  - `biddingWinningInfoList`: 中标单位信息
+  - `biddingAgentInfoList`: 招标代理机构信息列表
+  - `biddingPurchasingInfoList`: 招标单位相关信息列表
+  - `biddingWinningInfoList`: 中标单位相关信息列表
   - `biddingRegion`: 招投标所属地区
   - `hasFile`: 有无附件
 
-### 7. planned_projects
+### 7. bid_bigdata_planned_projects
 **功能**: 拟建项目查询
 
-查询企业拟建公告的信息，提供通过企业名称等多种方式检索拟建项目的相关详情。
+查询企业拟建公告的信息，提供通过企业名称、注册号、社会信用代码或企业ID等多种方式检索拟建项目的相关详情。
 
 **参数**:
-- `matchKeyword` (必需): 企业名称/注册号/统一社会信用代码/企业id
+- `matchKeyword` (必需): 匹配关键词 - 企业名称/注册号/统一社会信用代码/企业id
 - `pageIndex` (可选): 页码 - 从1开始
 - `pageSize` (可选): 分页大小 - 一页最多获取50条数据
-- `keywordType` (可选): 主体类型枚举
+- `keywordType` (可选): 主体类型 - name：企业名称，nameId：企业id，regNumber：注册号，socialCreditCode：统一社会信用代码
 
 **返回值**:
 - `total`: 总数
-- `resultList`: 拟建项目列表
+- `resultList`: 结果列表
   - `ppId`: 项目id
   - `deviceList`: 待采设备
   - `ppRegion`: 建设地点
@@ -179,19 +181,54 @@
 
 ## 使用场景
 
-1. **商业机会发现**: 查找相关行业的招标机会，发现新的业务机会
-2. **竞争对手分析**: 了解竞争对手的中标情况和业务范围
-3. **企业能力评估**: 通过中标记录评估企业实力和专业能力
-4. **市场研究**: 分析特定行业的招投标趋势和市场动向
-5. **合作伙伴筛选**: 根据中标记录选择优质的合作伙伴
-6. **供应链分析**: 了解企业的采购习惯和供应商网络
-7. **项目跟踪**: 跟踪企业的拟建项目和发展规划
+1. **政府采购**: 查询合适的招标项目，了解招投标动态
+2. **企业投标**: 查找投标机会，分析竞争对手情况
+3. **市场分析**: 分析招投标市场趋势，制定商业策略
+4. **风险评估**: 评估企业招投标能力和履约能力
+5. **商业拓展**: 发现潜在商业机会和合作伙伴
+6. **行业研究**: 了解特定行业的招投标活跃度
 
 ## 使用注意事项
 
-1. **企业全称要求**: 在调用需要企业全称的接口时，如果没有企业全称则先调取fuzzy_search接口获取企业全称
-2. **分页限制**: 支持分页查询，一页最多获取50条数据，提高查询效率
-3. **时间范围**: 支持按时间范围筛选招投标信息，注意日期格式
-4. **地区筛选**: 支持按地区筛选招投标项目，可多选省份和城市
-5. **金额单位**: 项目金额单位为万元，注意数值范围设置
-6. **数据时效性**: 招投标信息更新及时，建议关注最新公告 
+1. **企业全称要求**: 在调用需要企业全称的接口时，如果没有企业全称则先调取bid_bigdata_fuzzy_search接口获取企业全称
+2. **分页限制**: 一页最多获取50条数据
+3. **时间格式**: 日期参数格式为"YYYY-MM-DD"
+4. **金额单位**: 项目金额单位为万元
+5. **地区筛选**: 支持按省份、城市进行多选筛选
+
+## 使用提问示例
+
+### bid_bigdata_fuzzy_search (企业关键词模糊搜索)
+1. 帮我查找包含"中建"关键词的企业信息
+2. 搜索与"中铁"相关的企业列表
+3. 查询名称中包含"华为"的公司
+
+### bid_bigdata_bid_win_stats (企业中标统计分析)
+1. 分析中国建筑股份有限公司的中标统计情况
+2. 查询华为技术有限公司的中标金额分布
+3. 中铁建设集团的中标趋势分析
+
+### bid_bigdata_bidding_info (企业招投标信息查询)
+1. 查询中国建筑参与的招投标项目信息
+2. 华为最近的招投标记录有哪些？
+3. 中铁建设的招投标公告详情
+
+### bid_bigdata_tender_stats (企业招标统计分析)
+1. 分析国家电网的招标统计情况
+2. 查询中石油的招标金额分布
+3. 中国移动的招标趋势分析
+
+### bid_bigdata_procurement_stats (企业采购统计分析)
+1. 分析华为的采购产品分布情况
+2. 查询阿里巴巴的采购区域分布
+3. 腾讯的采购统计数据
+
+### bid_bigdata_bid_search (招投标信息搜索)
+1. 搜索最近的5G基站建设招标项目
+2. 查找广东省的政府采购招标信息
+3. 搜索金额在1000万以上的工程招标项目
+
+### bid_bigdata_planned_projects (拟建项目查询)
+1. 查询中国建筑的拟建项目信息
+2. 华为有哪些拟建工程项目？
+3. 中铁建设的拟建项目详情 

@@ -13,7 +13,7 @@
 
 ## 可用工具
 
-### 1. fuzzy_search
+### 1. customs_bigdata_fuzzy_search
 **功能**: 企业关键词模糊查询
 
 根据提供的企业名称、人名、品牌、产品、岗位等关键词模糊查询相关企业列表。
@@ -27,7 +27,7 @@
 - `total`: 总数
 - `resultList`: 结果列表
 
-### 2. export_trends
+### 2. customs_bigdata_export_trends
 **功能**: 出口趋势分析
 
 根据企业的身份标识信息查询该企业的外贸出口趋势，包括每年的出口金额和订单数量等数据。
@@ -43,7 +43,7 @@
   - `year`: 年份
 - `total`: 出口年份总数
 
-### 3. export_product_trends
+### 3. customs_bigdata_export_product_trends
 **功能**: 出口商品趋势分析
 
 查询并分析企业外贸商品的发展趋势，提供企业在不同年份的出口商品订单量及海关HS编码分布信息。
@@ -63,7 +63,7 @@
   - `count`: 数量
   - `name`: 名称
 
-### 4. export_recruitment_profile
+### 4. customs_bigdata_export_recruitment_profile
 **功能**: 外贸招聘分析
 
 根据输入的企业标识信息，获取企业在过去三个月内的外贸相关岗位的招聘情况。
@@ -82,7 +82,7 @@
 - `recruitingSourceCount`: 招聘渠道数量
 - `recruitingSourceList`: 招聘渠道
 
-### 5. export_order_regions
+### 5. customs_bigdata_export_order_regions
 **功能**: 出口订单地理分布
 
 根据提供的企业标识信息查询该企业外贸订单的地理分布情况，包括各地区的订单金额、数量等。
@@ -101,7 +101,7 @@
   - `weight`: 净重（千克）
 - `total`: 分布地区总数
 
-### 6. overseas_certifications
+### 6. customs_bigdata_overseas_certifications
 **功能**: 海外认证信息查询
 
 根据企业的名称、注册编号等查询企业的海外认证信息，包括认证类别、证书编号及相关产品信息。
@@ -128,9 +128,15 @@
 
 ## 使用注意事项
 
-1. **企业全称要求**: 在调用需要企业全称的接口时，如果没有企业全称则先调取fuzzy_search接口获取企业全称
+1. **企业全称要求**: 在调用需要企业全称的接口时，如果没有企业全称则先调取customs_bigdata_fuzzy_search接口获取企业全称
 2. **分页限制**: 一页最多获取50条数据
 3. **金额单位**: 出口金额以美元为单位
 4. **重量单位**: 净重以千克为单位
 5. **时间范围**: 招聘信息为过去三个月内的数据
-6. **HS编码**: 商品分类基于海关HS编码标准 
+6. **HS编码**: 商品分类基于海关HS编码标准
+
+## 使用提问示例
+
+1. **华为的出口贸易情况如何？主要出口哪些产品到哪些国家？**
+2. **比亚迪近年来的出口趋势如何？有没有获得海外认证？**
+3. **小米的外贸业务发展怎么样？最近有在招聘外贸相关岗位吗？** 

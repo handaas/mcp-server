@@ -13,7 +13,7 @@
 
 ## 可用工具
 
-### 1. get_keyword_search
+### 1. enterprise_get_keyword_search
 **功能**: 关键词模糊查询企业
 
 根据提供的企业名称、人名、品牌、产品、岗位等关键词模糊查询相关企业列表。
@@ -36,7 +36,7 @@
 - `regCapitalValue`: 注册资本
 - `annualTurnover`: 年营业额
 
-### 2. get_enterprise_base_info
+### 2. enterprise_get_enterprise_base_info
 **功能**: 查询企业基础信息
 
 通过输入企业全称查询企业业务相关信息，识别该公司是做什么的。
@@ -50,7 +50,7 @@
 - `business_info`: 企业业务
 - `tag`: 企业标签
 
-### 3. get_enterprise_holder_info
+### 3. enterprise_get_enterprise_holder_info
 **功能**: 查询企业控股股东信息
 
 通过输入企业全称查询企业控股股东信息，该信息通过工商信息及旷湖全部数据分析得出。
@@ -70,7 +70,7 @@
   - `subscriptionDetail`: 认缴信息
 - `stockHolderList`: 股东列表（最新公示）来自于上市信息
 
-### 4. get_enterprise_invest_info
+### 4. enterprise_get_enterprise_invest_info
 **功能**: 查询企业对外投资信息
 
 通过输入企业全称查询企业的对外投资信息，该信息通过工商信息及旷湖全部数据分析得出。
@@ -92,7 +92,7 @@
   - `scCode`: 对外投资企业统一信用编码
   - `subscriptionAmount`: 投资金额信息
 
-### 5. get_enterprise_branch_info
+### 5. enterprise_get_enterprise_branch_info
 **功能**: 查询企业分支机构信息
 
 通过输入企业全称查询企业的分支机构信息，分支机构信息来源于工商公示。
@@ -111,7 +111,7 @@
   - `registrationAuthority`: 登记机关
   - `socialCreditCode`: 统一社会信用代码
 
-### 6. get_enterprise_main_person_info
+### 6. enterprise_get_enterprise_main_person_info
 **功能**: 查询企业主要人员信息
 
 通过输入企业全称查询企业的主要人员信息，主要人员信息来源于工商公示。
@@ -133,10 +133,34 @@
 2. **API限制**: 分页查询时，一页最多获取50条数据。
 3. **错误处理**: 所有接口都包含错误处理，查询失败时会返回相应的错误信息。
 
-## 使用示例
+## 使用提问示例
 
-1. 探迹科技是做什么的?
-2. 探迹科技有哪些股东？
-3. 探迹科技对外投资了哪些企业？
-4. 探迹科技有哪些分公司？
-5. 探迹科技的业务有哪些？ 
+### enterprise_get_keyword_search (企业关键词模糊搜索)
+1. 帮我查找包含"探迹"关键词的企业信息
+2. 搜索与"腾讯"相关的企业列表
+3. 查询名称中包含"阿里巴巴"的公司
+
+### enterprise_get_enterprise_base_info (企业基础信息查询)
+1. 探迹科技是做什么的？
+2. 腾讯科技有限公司的主营业务是什么？
+3. 北京字节跳动科技有限公司的企业简介
+
+### enterprise_get_enterprise_holder_info (企业控股股东信息)
+1. 探迹科技有哪些股东？
+2. 腾讯的控股股东都有谁？
+3. 查询字节跳动的股权结构信息
+
+### enterprise_get_enterprise_invest_info (企业对外投资信息)
+1. 探迹科技对外投资了哪些企业？
+2. 腾讯投资了哪些公司？
+3. 阿里巴巴的投资组合有哪些？
+
+### enterprise_get_enterprise_branch_info (企业分支机构信息)
+1. 探迹科技有哪些分公司？
+2. 腾讯在全国有哪些分支机构？
+3. 华为的分公司分布情况
+
+### enterprise_get_enterprise_main_person_info (企业主要人员信息)
+1. 探迹科技的主要管理人员有哪些？
+2. 腾讯的高管团队信息
+3. 字节跳动的核心人员构成 

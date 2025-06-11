@@ -58,11 +58,11 @@ def call_api(product_id: str, params: dict) -> dict:
         return "查询失败"
 
 @mcp.tool()
-def get_keyword_search(matchKeyword: str, pageIndex: int = None, pageSize: int = None) -> dict:
+def enterprise_get_keyword_search(matchKeyword: str, pageIndex: int = None, pageSize: int = None) -> dict:
     """
     关键词模糊查询企业
     该接口的功能是根据提供的企业名称、人名、品牌、产品、岗位等关键词模糊查询相关企业列表。返回匹配的企业列表及其详细信息，用于查找和识别特定的企业信息。
-        
+
     参数:
         - matchKeyword: 匹配关键词 - 查询各类信息包含匹配关键词的企业
         - pageIndex: 分页开始位置
@@ -86,21 +86,21 @@ def get_keyword_search(matchKeyword: str, pageIndex: int = None, pageSize: int =
         'pageIndex': pageIndex,
         'pageSize': pageSize,
     }
-    
+
     # 过滤None值
     params = {k: v for k, v in params.items() if v is not None}
-    
+
     # 调用API
     return call_api('675cea1f0e009a9ea37edaa1', params)
 
 
 @mcp.tool()
-def get_enterprise_base_info(keyword: str) -> dict:
+def enterprise_get_enterprise_base_info(keyword: str) -> dict:
     """
     该接口通过输入企业全称查询企业业务相关信息，识别该公司是做什么的。如果没有全称则需要先调用关键词模糊查询企业接口进行补全后，再调用该接口。返回企业工商信息、企业简介、企业标签、企业业务。
-    
+
     参数:
-      - keyword: 企业全称   
+      - keyword: 企业全称
     返回值:
       - base_info: 企业工商信息
       - desc: 企业简介
@@ -113,7 +113,7 @@ def get_enterprise_base_info(keyword: str) -> dict:
         enterprise_desc = call_api("6682b0b370f56cb7d77701e0", {"matchKeyword": keyword})
         enterprise_business_info = call_api("66e55613ae988a28c6db9259", {"matchKeyword": keyword})
         enterprise_tag = call_api("669e531ce1fd7bff82321d8d", {"matchKeyword": keyword})
-        
+
         return {
             "base_info": enterprise_base_info,
             "desc": enterprise_desc,
@@ -124,12 +124,11 @@ def get_enterprise_base_info(keyword: str) -> dict:
         return "查询失败"
 
 
-
 @mcp.tool()
-def get_enterprise_holder_info(keyword: str) -> dict:
+def enterprise_get_enterprise_holder_info(keyword: str) -> dict:
     """
     该接口通过输入企业全称查询企业控股股东信息。如果没有全称则需要先调用关键词模糊查询企业接口进行补全后，再调用该接口。该信息通过工商信息及旷湖全部数据分析得出。
-    
+
     参数:
       - keyword: 企业全称
     返回值:
@@ -146,20 +145,20 @@ def get_enterprise_holder_info(keyword: str) -> dict:
     """
     try:
         # 调用模糊搜索接口
-        holder_info = call_api("66b485eadaf8c77fb249a441", {"matchKeyword": keyword})        
+        holder_info = call_api("66b485eadaf8c77fb249a441", {"matchKeyword": keyword})
         return holder_info
     except Exception as e:
         return "查询失败"
 
 
 @mcp.tool()
-def get_enterprise_invest_info(keyword: str) -> dict:
+def enterprise_get_enterprise_invest_info(keyword: str) -> dict:
     """
     该接口通过输入企业全称查询企业的对外投资信息。如果没有全称则需要先调用关键词模糊查询企业接口进行补全后，再调用该接口。该信息通过工商信息及旷湖全部数据分析得出。
-    
+
     参数:
       - keyword: 企业全称
-      
+
     返回值:
       - resultList: 对外投资结果列表
         - addressValue: 被投资公司所属地区
@@ -176,17 +175,17 @@ def get_enterprise_invest_info(keyword: str) -> dict:
     """
     try:
         # 调用模糊搜索接口
-        invest_info = call_api("669e5ee54efb02e6f96c7c9c", {"matchKeyword": keyword})        
+        invest_info = call_api("669e5ee54efb02e6f96c7c9c", {"matchKeyword": keyword})
         return invest_info
     except Exception as e:
         return "查询失败"
 
 
 @mcp.tool()
-def get_enterprise_branch_info(keyword: str) -> dict:
+def enterprise_get_enterprise_branch_info(keyword: str) -> dict:
     """
     该接口通过输入企业全称查询企业的分支机构信息，分支机构信息来源于工商公示。如果没有全称则需要先调用关键词模糊查询企业接口进行补全后，再调用该接口。
-    
+
     参数:
       - keyword: 企业全称
 
@@ -203,17 +202,17 @@ def get_enterprise_branch_info(keyword: str) -> dict:
     """
     try:
         # 调用模糊搜索接口
-        branch_info = call_api("669fa757c629692bdb8d80b7", {"matchKeyword": keyword})        
+        branch_info = call_api("669fa757c629692bdb8d80b7", {"matchKeyword": keyword})
         return branch_info
     except Exception as e:
         return "查询失败"
 
 
 @mcp.tool()
-def get_enterprise_main_person_info(keyword: str) -> dict:
+def enterprise_get_enterprise_main_person_info(keyword: str) -> dict:
     """
     该接口通过输入企业全称查询企业的主要人员信息，主要人员信息来源于工商公示。如果没有全称则需要先调用关键词模糊查询企业接口进行补全后，再调用该接口。
-    
+
     参数:
       - keyword: 企业全称
 
@@ -227,7 +226,7 @@ def get_enterprise_main_person_info(keyword: str) -> dict:
     """
     try:
         # 调用模糊搜索接口
-        main_person_info = call_api("669fa60021b2cee211ad3ef2", {"matchKeyword": keyword})        
+        main_person_info = call_api("669fa60021b2cee211ad3ef2", {"matchKeyword": keyword})
         return main_person_info
     except Exception as e:
         return "查询失败"

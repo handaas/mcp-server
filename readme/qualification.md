@@ -12,7 +12,7 @@
 
 ## 可用工具
 
-### 1. fuzzy_search
+### 1. qualification_bigdata_fuzzy_search
 **功能**: 企业关键词模糊查询
 
 根据提供的企业名称、人名、品牌、产品、岗位等关键词模糊查询相关企业列表。
@@ -26,7 +26,7 @@
 - `total`: 总数
 - `resultList`: 结果列表
 
-### 2. honor_qualifications
+### 2. qualification_bigdata_honor_qualifications
 **功能**: 荣誉资质查询
 
 根据输入的企业相关信息，查询并返回企业获得的荣誉资质详细信息，包括认定机关、资质级别、有效期等。
@@ -46,7 +46,7 @@
   - `eaqType`: 资质类型
   - `eaqAuthority`: 认定机关
 
-### 3. enterprise_qualifications
+### 3. qualification_bigdata_enterprise_qualifications
 **功能**: 企业资质信息查询
 
 查询和返回企业的资质信息，包括资质总数、资质信息列表、企业资质分类、资质类型等多维度数据。
@@ -69,7 +69,7 @@
   - `highTechIndustryList`: 高新行业分类
   - `greenProducts`: 绿色设计产品
 
-### 4. administrative_licenses
+### 4. qualification_bigdata_administrative_licenses
 **功能**: 行政许可信息查询
 
 根据提供的企业标识信息查询并返回企业的相关行政许可信息，包括许可详情和有效期限。
@@ -92,7 +92,7 @@
   - `creditPubLicenseId`: 行政许可决定文书号
   - `fileName`: 行政许可决定文书名称
 
-### 5. qualification_certificate_profile
+### 5. qualification_bigdata_qualification_certificate_profile
 **功能**: 资质证书概况统计
 
 根据企业的基本信息查询该企业的资质证书相关概况，包括总证书数量、获证时间分析等。
@@ -119,8 +119,14 @@
 
 ## 使用注意事项
 
-1. **企业全称要求**: 在调用需要企业全称的接口时，如果没有企业全称则先调取fuzzy_search接口获取企业全称
+1. **企业全称要求**: 在调用需要企业全称的接口时，如果没有企业全称则先调取qualification_bigdata_fuzzy_search接口获取企业全称
 2. **分页限制**: 不同接口有不同的分页限制，企业资质查询一页最多10条，行政许可查询一页最多50条
 3. **有效期关注**: 关注资质和许可的有效期，确保资质的时效性
 4. **资质分类**: 企业资质分为5个主要类别，便于分类管理和查询
-5. **数据时效性**: 资质信息会定期更新，建议关注最新的获证日期 
+5. **数据时效性**: 资质信息会定期更新，建议关注最新的获证日期
+
+## 使用提问示例
+
+1. **腾讯有哪些资质证书？都是什么级别的？**
+2. **阿里巴巴获得了哪些荣誉资质？有效期到什么时候？**
+3. **百度最近一年新获得了多少个证书？主要是什么类型的行政许可？** 
