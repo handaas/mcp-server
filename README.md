@@ -1,6 +1,6 @@
-# 旷湖企业大数据服务MCP
+# 旷湖企业大数据服务MCP聚合
 
-[该MCP服务提供旷湖企业大数据服务，是一个全面的企业信息查询和分析平台，涵盖企业工商信息、风险分析、知识产权、地理分布、经营洞察等多个维度的专业数据服务。](https://www.handaas.com/)
+[该MCP服务提供旷湖企业大数据服务，是一个全面的信息查询和分析平台，涵盖企业工商信息、风险分析、知识产权、地理分布、经营洞察等多个维度的专业数据服务。](https://www.handaas.com/)
 
 ## 简介
 
@@ -112,15 +112,10 @@ SECRET_ID=your_secret_id
 SECRET_KEY=your_secret_key
 ```
 
-### 4. 修改server/enterprise_mcp_server脚本中启动方式为streamable-http
-
-```python
-mcp.run(transport="streamable-http")
-```
-### 4. 启动服务
+### 4. streamable-http启动服务
 
 ```bash
-python server/enterprise_mcp_server.py
+python server/enterprise_mcp_server.py streamable-http
 ```
 
 服务将在 `http://localhost:8000` 启动。
@@ -257,7 +252,7 @@ python server/factory_insight_mcp_server.py
 # 渠道洞察服务
 python server/channel_insight_mcp_server.py
 
-# 云迁移服务
+# 上云大数据服务
 python server/cloudmigration_mcp_server.py
 ```
 

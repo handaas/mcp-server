@@ -1,17 +1,10 @@
-"""
-自动生成的HandaaS API MCP工具方法
-生成时间: 2025-05-30 15:53:56
-此文件由generate_mcp_tools.py自动生成，请勿手动修改
-"""
-
-# 全局导入
 import json
-from typing import Dict, List, Optional, Any, Union
 import os
 from hashlib import md5
 import requests
 from mcp.server.fastmcp import FastMCP
 from dotenv import load_dotenv
+import sys
 
 load_dotenv()
 
@@ -66,7 +59,7 @@ def call_api(product_id: str, params: dict) -> dict:
     url = f'https://console.handaas.com/api/v1/integrator/call_api/{INTEGRATOR_ID}'
     try:
         response = requests.post(url, data=call_params)
-        return response.json().get("data", "查询为空")
+        return response.json().get("data", None) or response.json().get("msgCN", None)
     except Exception as e:
         return "查询失败"
     
@@ -173,7 +166,7 @@ def operation_insight_brand_profile(matchKeyword: str, keywordType: str = None) 
 
 
 @mcp.tool()
-def operation_insight_enterprise_rankings(matchKeyword: str, keywordType: str = None, pageIndex: int = None,
+def operation_insight_enterprise_rankings(matchKeyword: str, keywordType: str = None, pageIndex: int = 1,
                         pageSize: int = None) -> dict:
     """
     该接口的功能是查询和返回企业的上榜信息，通过输入企业名称、注册号、统一社会信用代码或企业ID等信息，能够获取榜单总数、榜单信息列表、榜单类型、上榜公司名、榜单名称、排名、发布年份、榜单级别以及发布单位等多维度数据。此接口可用于市场分析、行业研究、投资决策、品牌评估等场景，帮助用户了解企业在行业内的地位和影响力。例如，投资机构可通过该接口筛选出行业内表现优异的企业作为潜在投资对象；企业自身可借此了解自身在行业中的排名变化，以便制定相应的发展战略；行业研究机构也可利用此数据进行市场趋势分析和行业竞争力评估。
@@ -182,7 +175,7 @@ def operation_insight_enterprise_rankings(matchKeyword: str, keywordType: str = 
     请求参数:
     - matchKeyword: 匹配关键词 类型：string - 企业名称/注册号/统一社会信用代码/企业id，如果没有企业全称则先调取fuzzy_search接口获取企业全称。
     - keywordType: 主体类型 类型：select - 主体类型枚举（name：企业名称，nameId：企业id，regNumber：注册号，socialCreditCode：统一社会信用代码)
-    - pageIndex: 页码 类型：int
+    - pageIndex: 页码 类型：int - 从1开始
     - pageSize: 分页大小 类型：int - 一页最多获取10条数据
 
     返回参数:
@@ -239,7 +232,7 @@ def operation_insight_business_scale(matchKeyword: str, keywordType: str = None)
 
 
 @mcp.tool()
-def operation_insight_fuzzy_search(matchKeyword: str, pageIndex: int = None, pageSize: int = None) -> dict:
+def operation_insight_fuzzy_search(matchKeyword: str, pageIndex: int = 1, pageSize: int = None) -> dict:
     """
     该接口的功能是根据提供的企业名称、人名、品牌、产品、岗位等关键词模糊查询相关企业列表。返回匹配的企业列表及其详细信息，用于查找和识别特定的企业信息。
 
@@ -254,20 +247,7 @@ def operation_insight_fuzzy_search(matchKeyword: str, pageIndex: int = None, pag
     - resultList: 结果列表 类型：list of dict
     - annualTurnover: 年营业额 类型：string
     - formerNames: 曾用名 类型：list of string
-    - catchReason: 命中原因 类型：dict
     - address: 注册地址 类型：string
-    - holderList: 股东 类型：list of string
-    - address: 地址 类型：list of string
-    - name: 企业名称 类型：list of string
-    - goodsNameList: 产品名称 类型：list of string
-    - operBrandList: 品牌 类型：list of string
-    - mobileList: 手机 类型：list of string
-    - phoneList: 固话 类型：list of string
-    - recruitingName: 招聘岗位 类型：list of string
-    - emailList: 邮箱 类型：list of string
-    - patentNameList: 专利 类型：list of string
-    - certNameList: 资质证书 类型：list of string
-    - socialCreditCode: 统一社会信用代码 类型：list of string
     - foundTime: 成立时间 类型：string
     - enterpriseType: 企业主体类型 类型：string
     - legalRepresentative: 法定代表人 类型：string
@@ -280,6 +260,22 @@ def operation_insight_fuzzy_search(matchKeyword: str, pageIndex: int = None, pag
     - regCapitalCoinType: 注册资本币种 类型：string
     - regCapitalValue: 注册资本金额 类型：int
     - name: 企业名称 类型：string
+    - catchReason: 命中原因 类型：dict
+    - catchReason.name: 企业名称 类型：list of string
+    - catchReason.formerNames: 曾用名 类型：list of string
+    - catchReason.holderList: 股东 类型：list of string
+    - catchReason.recruitingName: 招聘岗位 类型：list of string
+    - catchReason.address: 地址 类型：list of string
+    - catchReason.operBrandList: 品牌 类型：list of string
+    - catchReason.goodsNameList: 产品名称 类型：list of string
+    - catchReason.phoneList: 固话 类型：list of string
+    - catchReason.emailList: 邮箱 类型：list of string
+    - catchReason.mobileList: 手机 类型：list of string
+    - catchReason.patentNameList: 专利 类型：list of string
+    - catchReason.certNameList: 资质证书 类型：list of string
+    - catchReason.prmtKeys: 推广关键词 类型：list of string
+    - catchReason.socialCreditCode: 统一社会信用代码 类型：list of string
+
     """
     # 构建请求参数
     params = {
@@ -326,7 +322,7 @@ def operation_insight_news_sentiment_stats(matchKeyword: str, keywordType: str =
 
 
 @mcp.tool()
-def operation_insight_similar_projects(matchKeyword: str, pageIndex: int = None, pageSize: int = None, keywordType: str = None) -> dict:
+def operation_insight_similar_projects(matchKeyword: str, pageIndex: int = 1, pageSize: int = 10, keywordType: str = None) -> dict:
     """
     该接口的功能是根据输入的企业识别信息（如企业名称、注册号、统一社会信用代码或企业id）和主体类型，查询与该企业相关的相似项目信息，并返回这些项目信息的详细描述，包括项目所属企业、最新融资轮次、项目概述及相关图片、企业id、项目名称和相似项目的总数。该接口的场景利用包括企业投资分析、市场竞争分析、公司内部项目管理系统中用于评估企业的项目布局情况或潜在投资机会的探查等，方便使用者掌握企业相关或竞争企业的项目动态。
 
@@ -425,9 +421,24 @@ def operation_insight_financing_info(matchKeyword: str, keywordType: str = None)
 
 
 if __name__ == "__main__":
-    print("正在启动operation_insight MCP服务器...")
-    # streamable-http方式运行服务器
-    # mcp.run(transport="streamable-http")
+    print("正在启动MCP服务...")
+    # 解析第一个参数
+    if len(sys.argv) > 1:
+        start_type = sys.argv[1]
+    else:
+        start_type = "stdio"
 
-    # stdio方式运行服务器
-    mcp.run(transport="stdio")
+    print(f"启动方式: {start_type}")
+    if start_type == "stdio":
+        print("正在使用stdio方式启动MCP服务器...")
+        mcp.run(transport="stdio")
+    if start_type == "sse":
+        print("正在使用sse方式启动MCP服务器...")
+        mcp.run(transport="sse")
+    elif start_type == "streamable-http":
+        print("正在使用streamable-http方式启动MCP服务器...")
+        mcp.run(transport="streamable-http")
+    else:
+        print("请输入正确的启动方式: stdio 或 sse 或 streamable-http")
+        exit(1)
+    
