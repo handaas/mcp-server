@@ -73,8 +73,8 @@
 - [🛒 电商大数据服务](https://github.com/handaas/estore-mcp-server) - 提供电商平台店铺信息和销售数据分析
 - [📜 政策大数据服务](https://github.com/handaas/policy-mcp-server) - 提供政府补贴和政策支持信息查询
 - [🏭 工厂洞察服务](https://github.com/handaas/factory-mcp-server) - 提供制造业生产能力和工艺分析
-- [🏪 渠道洞察服务](https://github.com/handaas/factory-channel-mcp-server) - 提供销售渠道和经销商网络分析
-- [☁️ 上云大数据服务](https://github.com/handaas/cloudmigration-mcp-server) - 提供云服务使用和技术栈分析
+- [🏪 渠道洞察服务](https://github.com/handaas/factory-channel-mcp-server) - 提供企业销售渠道和经销商网络分析
+- [☁️ 上云大数据服务](https://github.com/handaas/cloudmigration-mcp-server) - 提供企业的云上资产信息。
 
 ## 环境要求
 
